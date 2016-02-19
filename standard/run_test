@@ -1,0 +1,10 @@
+#!/bin/sh
+
+VERSION=$1
+
+nohup nice py$VERSION 1d_sn > 1d_sn.out &
+nohup nice py$VERSION cv_standard > cv_standard.out &
+nohup nice mpirun -n 10 py$VERSION fiducial_agn > fiducial_agn.out &
+nohup nice mpirun -n 10 py$VERSION cv_macro_benchmark > cv_macro_benchmark.out &
+nohup nice mpirun -n 10 py$VERSION m16_agn > m16_agn.out &
+
